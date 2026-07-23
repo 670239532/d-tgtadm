@@ -30,7 +30,8 @@ docker run -itd \
   --restart unless-stopped \
   -v ./d-tgtadm/iscsi:/app/iscsi \
   -v ./d-tgtadm/config:/app/config \
-  ghcr.io/coracoo/d-tgtadm:latest
+  registry.cn-hangzhou.aliyuncs.com/rd-public/d-tgtadm:amd64-0.0.1
+# 原镜像 ghcr.io/coracoo/d-tgtadm:latest
 ```
 
 #### arm64 使用
