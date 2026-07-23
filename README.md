@@ -51,6 +51,6 @@ docker run -itd \
 容器启动后，可以通过 `http://<宿主机IP>:13260` 访问Web管理界面，管理iSCSI Target和LUN。
 
 # docker build
-如果是arm64的服务器，则需要git clone后，进入源码包中 使用 docker build 构建arm镜像
+如果是arm64的服务器，则需要git clone后，进入源码包中 使用 docker build 构建arm镜像（也能用上面build好的）
 docker build -t d-tgtadm:0.0.1 .
 
