@@ -1,13 +1,11 @@
 # 前言
-
-个人利用AI写的一个iSCSI服务，基于tgt docker实现，让绿联、极空间、飞牛等无iSCSI服务的NAS用户也可以提供块存储。
-
+利用AI写的一个iSCSI服务，基于tgt docker实现，让绿联、极空间、飞牛等无iSCSI服务的NAS用户也可以提供块存储。
 
 # 项目介绍
 
 # iSCSI 容器服务
 
-这个容器提供了一个完整的iSCSI Target服务，并包含Web管理界面。
+这个容器提供了一个完整的iSCSI Target服务，并包含Web管理界面，端口占用3260（iscsi），13260（web）。
 
 ## 持久化配置
 
@@ -24,20 +22,25 @@
 
 使用以下命令运行容器并持久化配置：
 
+#### x86_64 使用
 ```bash
 docker run -itd \
   --name d-tgtadm \
-  # 占用3260（iscsi），13260（web）
   --network=host \
-  # 虚拟磁盘存放路径
-  -v /tgt/iscsi:/app/iscsi \
-  # 现有虚拟磁盘，可以单独导入
-  -v /现有虚拟磁盘路径/1.img:/app/iscsi/1.img \
-  # 日志、配置文件永久存储文件夹
-  -v /tgt/config:/app/config \
+  --restart unless-stopped \
+  -v ./d-tgtadm/iscsi:/app/iscsi \
+  -v ./d-tgtadm/config:/app/config \
   ghcr.io/coracoo/d-tgtadm:latest
 ```
 
+#### arm64 使用
+docker run -itd \
+  --name d-tgtadm \
+  --network=host \
+  --restart unless-stopped \
+  -v ./d-tgtadm/iscsi:/app/iscsi \
+  -v ./d-tgtadm/config:/app/config \
+  registry.cn-hangzhou.aliyuncs.com/rd-public/d-tgtadm:aarch64-0.0.1
 ---
 
 # Web管理界面
@@ -46,4 +49,5 @@ docker run -itd \
 
 # docker build
 如果是arm64的服务器，则需要git clone后，进入源码包中 使用 docker build 构建arm镜像
+docker build -t d-tgtadm:0.0.1 .
 
