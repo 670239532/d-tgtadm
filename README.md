@@ -34,6 +34,7 @@ docker run -itd \
 ```
 
 #### arm64 使用
+```bash
 docker run -itd \
   --name d-tgtadm \
   --network=host \
@@ -41,6 +42,7 @@ docker run -itd \
   -v ./d-tgtadm/iscsi:/app/iscsi \
   -v ./d-tgtadm/config:/app/config \
   registry.cn-hangzhou.aliyuncs.com/rd-public/d-tgtadm:aarch64-0.0.1
+```
 ---
 
 # Web管理界面
