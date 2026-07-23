@@ -4,8 +4,6 @@ FROM ubuntu:22.04
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
-LABEL maintainer="可爱的小cherry"
-
 # 配置环境变量，避免交互式提示
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
