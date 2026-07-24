@@ -4,7 +4,7 @@ FROM ubuntu:22.04
 RUN sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list && \
     sed -i 's/security.ubuntu.com/mirrors.aliyun.com/g' /etc/apt/sources.list
 
-# 配置环境变量，避免交互式提示
+# 配置环境变量，避免交互式提示001
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TZ=Asia/Shanghai
 ENV PYTHONUNBUFFERED=1
